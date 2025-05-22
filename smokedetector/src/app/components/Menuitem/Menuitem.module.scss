@@ -1,0 +1,25 @@
+@import "@fontsource/alice";
+
+.container {
+    display: flex;
+    font-family: 'Orbitron', sans-serif;
+    justify-content: space-between;
+    font-weight: 500;
+    width: 400px;
+    font-family: "Alice";
+}
+
+.menuItem {
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    padding: 5px 12px;
+    font-size: 22px;
+    position: relative;
+    will-change: transform;
+    border-bottom: 1.5px solid transparent;
+}
+
+.menuItem:hover {
+    transform: translateY(-3px);
+    border-bottom-color: white;
+}

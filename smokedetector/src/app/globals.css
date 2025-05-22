@@ -1,0 +1,125 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  background-color: black;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+} */
+
+.backgroundImage {
+  background-image: url('/Images/lung.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 900px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* შავიდან თანდათანობით გამოჩენის ეფექტი */
+.backgroundImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.7) 0%,
+      /* მარცხენა კიდე ოდნავ შავი */
+      rgba(0, 0, 0, 0.4) 20%,
+      /* თანდათან ნაკლები შავი */
+      rgba(0, 0, 0, 0.1) 35%,
+      /* ძალიან ნაკლები */
+      rgba(0, 0, 0, 0) 50%,
+      /* ცენტრში სრულად გამჭვირვალე */
+      rgba(0, 0, 0, 0.1) 65%,
+      /* მარჯვნივ ისევ იწყება შავი */
+      rgba(0, 0, 0, 0.4) 80%,
+      /* ოდნავ უფრო შავი */
+      rgba(0, 0, 0, 0.7) 100%
+      /* მარჯვენა კიდე ოდნავ შავი */
+    ),
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      /* ზედა კიდე ოდნავ შავი */
+      rgba(0, 0, 0, 0.4) 20%,
+      /* თანდათან ნაკლები შავი */
+      rgba(0, 0, 0, 0.1) 35%,
+      /* ძალიან ნაკლები */
+      rgba(0, 0, 0, 0) 50%,
+      /* ცენტრში სრულად გამჭვირვალე */
+      rgba(0, 0, 0, 0.1) 65%,
+      /* ქვემოთ ისევ იწყება შავი */
+      rgba(0, 0, 0, 0.4) 80%,
+      /* ოდნავ უფრო შავი */
+      rgba(0, 0, 0, 0.7) 100%
+      /* ქვედა კიდე ოდნავ შავი */
+    );
+  pointer-events: none;
+  /* რომ არ შეუშალოს ინტერაქციას */
+  z-index: 1;
+}
+
+/* დამატებითი რადიალური ეფექტი ცენტრიდან */
+.backgroundImage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center,
+      rgba(0, 0, 0, 0) 30%,
+      /* ცენტრში გამჭვირვალე */
+      rgba(0, 0, 0, 0.1) 50%,
+      /* ოდნავ შავდება */
+      rgba(0, 0, 0, 0.3) 70%,
+      /* ოდნავ უფრო შავი */
+      rgba(0, 0, 0, 0.6) 90%,
+      /* კიდეებთან შავი */
+      rgba(0, 0, 0, 0.8) 100%
+      /* კიდეებზე შავი */
+    );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* კონტენტი რომ overlay-ების ზემოთ იყოს */
+.backgroundImage>* {
+  position: relative;
+  z-index: 10;
+}
