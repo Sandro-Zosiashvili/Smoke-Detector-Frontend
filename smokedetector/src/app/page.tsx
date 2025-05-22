@@ -1,9 +1,12 @@
-import Image from "next/image";
+'use client'
 import styles from "./page.module.css";
 import Menuitem from "./components/Menuitem/Menuitem";
 import Menu from "./components/Menu/Menu";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+
+  const router = useRouter()
 
   return (
 
@@ -11,9 +14,9 @@ export default function Home() {
 
       <div className={styles.containerContent}>
         <div className={styles.aboutus}>
-          Lorem ipsum  autem repudiandae explicabo quas illum ratione similique est, nam reprehenderit at molestias ullam. Autem!
+          Find out if you're a smoker — even if you don't realize it.
         </div>
-        <button className={styles.button}>
+        <button onClick={() => router.push('register')} className={styles.button}>
           Get started
         </button>
 

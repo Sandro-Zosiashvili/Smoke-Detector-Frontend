@@ -26,7 +26,7 @@ const Menuitem = () => {
         },
         {
             title: 'about us',
-            path: '/aboutus',
+            path: './aboutus',
         },
         {
             title: 'Contact',
