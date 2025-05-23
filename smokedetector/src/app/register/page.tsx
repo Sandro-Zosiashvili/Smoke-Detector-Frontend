@@ -28,6 +28,12 @@ const Register = () => {
     // } = useForm<any>()
     // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
+    const onSubmit = () => {
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+        setPopap(!popap);
+
+    }
+
 
 
     return (
@@ -190,10 +196,10 @@ const Register = () => {
 
                     </div>
                 </div>
-                <button onClick={() => setPopap(!popap)} className={styles.buttonTwo}>
+                <button onClick={onSubmit} className={styles.buttonTwo}>
                     Predict
                 </button>
-
+                {/* <input type="submit" onClick={() => setPopap(!popap)} className={styles.buttonTwo} /> */}
             </div>
 
 
