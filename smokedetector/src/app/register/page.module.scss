@@ -1,8 +1,9 @@
 .container {
-    height: 140vh;
+    height: 80vh;
     display: flex;
     // align-items: center;
     justify-content: center;
+    overflow-y: hidden
 }
 
 .input {
@@ -34,6 +35,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: #9f9d9d;
+    cursor: pointer;
 
 
     /* ლამაზი გრადიენტ ფონი */
@@ -122,6 +124,7 @@
     gap: 5px;
     margin-top: 10px;
 }
+
 .flexAlign {
     display: flex;
     flex-direction: column;
@@ -158,8 +161,38 @@
 }
 
 .popap {
-
-    top: 100px;
     position: absolute;
 
+}
+
+.redred {
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    top: 7px;
+    right: -210px;
+    font-size: 14px;
+    color: white;
+}
+
+.flex {
+    display: flex;
+    position: relative;
+}
+
+.leftSideRed {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    left: -210px;
+    text-align: right;
+    top: 7px;
+    font-size: 14px;
+    color: white;
+
+}
+
+.flexFlex {
+    position: relative;
+    display: flex;
 }

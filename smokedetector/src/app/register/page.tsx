@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { useState } from 'react'
 import Popap from '../components/Popap/Popap'
 import axios from 'axios'
+import { error } from 'console'
 
 
 
@@ -13,8 +14,15 @@ interface IFormInput {
 }
 type Inputs = {
     age: number;
-    gender: string;
-    weight: string
+    weight: number;
+    height: number;
+    waist: number;
+    hemoglobin: string;
+    systolic: string;
+    hdl: string;
+    triglyceride: string;
+    bloodSugar: string;
+    cholesterol: string
 }
 
 
@@ -28,10 +36,18 @@ const Register = () => {
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
         console.log(data, 'esaaa')
         axios.post('http:', data)
-        if (!errors.age) {
-            window.scrollTo({ top: 100, behavior: 'smooth' });
-            setPopap(!popap);
-            console.log('shemodis')
+        setPopap(!popap);
+
+        // if (!errors.age) {
+        //     window.scrollTo({ top: 100, behavior: 'smooth' });
+        //     console.log('shemodis')
+        // }
+    }
+
+    const keyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!/[0-9]/.test(e.key) &&
+            !['Backspace', 'Delete', 'Tab', 'Enter', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            e.preventDefault();
         }
     }
 
@@ -39,14 +55,6 @@ const Register = () => {
     const [popap, setPopap] = useState(false)
 
 
-    const onSubmitTwo = () => {
-        console.log(!!errors.age)
-        // if(!errors.age === true) {
-        //     window.scrollTo({ top: 100, behavior: 'smooth' });
-        //     setPopap(!popap);
-        //     console.log('shemodis')
-        // }
-    }
 
 
 
@@ -63,17 +71,28 @@ const Register = () => {
                                 <div className={styles.font}>
                                     AGE
                                 </div>
-                                <span>
-                                    {
-                                        errors.age?.type === 'required' &&
-                                        <div>
-                                            this feild is required
-                                        </div>
-                                    }
-                                </span>
-                                <input {...register('age', {
-                                    required: true,
-                                })} className={styles.inputStyle} placeholder='year' type='text' />
+                                <div className={styles.flexFlex}>
+                                    <span className={styles.leftSideRed}>
+                                        {
+                                            errors.age && <span>This feild is required</span>
+                                        }
+                                    </span>
+                                    <input {...register('age', {
+                                        required: true,
+                                        valueAsNumber: true,
+                                        maxLength: 3,
+
+
+
+                                    })} className={styles.inputStyle} placeholder='year' type='text'
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
+
+                                    />
+
+
+                                </div>
+
                             </div>
 
 
@@ -84,7 +103,24 @@ const Register = () => {
                                 <label className={styles.font}>
                                     HEIGHT
                                 </label>
-                                <input className={styles.inputStyle} placeholder='cm' type='text' />
+                                <div className={styles.flexFlex}>
+                                    <span className={styles.leftSideRed}>
+                                        {
+                                            errors.height && <span>This feild is required</span>
+                                        }
+
+                                    </span>
+                                    <input {...register('height', {
+                                        required: true,
+                                        valueAsNumber: true,
+                                        maxLength: 3,
+
+                                    })} className={styles.inputStyle} placeholder='cm' type='text'
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
+
+                                    />
+                                </div>
                             </div>
 
 
@@ -96,15 +132,23 @@ const Register = () => {
                                 <div className={styles.font}>
                                     WEIGHT
                                 </div>
-                                <select className={styles.inputStyle} {...register('weight', {
-                                    required: true
+                                <div className={styles.flexFlex}>
+                                    <span className={styles.leftSideRed}>
+                                        {
+                                            errors.weight && <span>This feild is required</span>
+                                        }
 
-                                })}>
-                                    <option value="">Select weight...</option>
-                                    <option value="80kg">85cm</option>
-                                    <option value="80kg">90cm</option>
-                                    <option value="80kg">100cm</option>
-                                </select>
+                                    </span>
+                                    <input className={styles.inputStyle}  {...register('weight', {
+                                        required: true,
+                                        valueAsNumber: true
+                                    })} placeholder='WEIGHT' type='text'
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
+
+                                    />
+                                </div>
+
                             </div>
 
 
@@ -116,63 +160,29 @@ const Register = () => {
                                 <div className={styles.font}>
                                     WAIST
                                 </div>
-                                <input className={styles.inputStyle} placeholder='cm' type='text' />
-                            </div>
+                                <div className={styles.flexFlex}>
+                                    <span className={styles.leftSideRed}>
+                                        {
+                                            errors.waist && <span>This feild is required</span>
+                                        }
 
+                                    </span>
+                                    <input {...register('waist', {
+                                        required: true,
+                                        valueAsNumber: true,
+                                        maxLength: 3
+                                    })} className={styles.inputStyle} placeholder='cm' type='text'
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
 
-
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    EYESIGHT
-                                </div>
-                                <input className={styles.inputStyle} placeholder='LEFT' type='text' />
-                            </div>
-
-
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    EYESIGHT
+                                    />
 
                                 </div>
-                                <input className={styles.inputStyle} placeholder='RIGHT' type='text' />
+
                             </div>
 
 
 
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    HEARING
-                                </div>
-                                <input className={styles.inputStyle} placeholder='left' type='text' />
-                            </div>
-
-
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    HEARING
-
-                                </div>
-                                <input className={styles.inputStyle} placeholder='right' type='text' />
-                            </div>
-
-
-
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    LDL
-                                </div>
-                                <input className={styles.inputStyle} placeholder='mmoI/L' type='text' />
-                            </div>
 
 
 
@@ -181,76 +191,33 @@ const Register = () => {
                                 <div className={styles.font}>
                                     HEMOGLOBIN
                                 </div>
-                                <input className={styles.inputStyle} placeholder='g/L' type='text' />
-                            </div>
+                                <div className={styles.flexFlex}>
+                                    <span className={styles.leftSideRed}>
+                                        {
+                                            errors.hemoglobin && <span>This feild is required</span>
+                                        }
 
-
-
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    URINE PROTEIN
+                                    </span>
+                                    <select defaultValue="" {...register('hemoglobin', {
+                                        required: true,
+                                    })} className={styles.inputStyle}>
+                                        <option value="" disabled>HB...</option>
+                                        <option value="13.8 - 17.2">13.8 - 17.2</option>
+                                        <option value="More than 17.5">More than 17.5</option>
+                                        <option value="Less than 13.8">Less than 13.8</option>
+                                    </select>
                                 </div>
-                                <input className={styles.inputStyle} placeholder='g/L' type='text' />
+
                             </div>
 
 
 
-
-
-
-                            <div className={styles.insideCenter}>
-                                <div className={styles.font}>
-                                    SERUM CREATININE
-                                </div>
-                                <input className={styles.inputStyle} placeholder='micromoles' type='text' />
-                            </div>
 
 
 
                         </div>
                     </div>
                     <div className={styles.feildTwo}>
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                AST
-                            </div>
-                            <input className={styles.inputStyle} placeholder='U/L' type='text' />
-                        </div>
-
-
-
-
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                ALT
-                            </div>
-                            <input className={styles.inputStyle} placeholder='U/L' type='text' />
-                        </div>
-
-
-
-
-
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                GTP
-                            </div>
-                            <input className={styles.inputStyle} placeholder='U/L' type='text' />
-                        </div>
-
-
-
-
-
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                DENTAL CARIES
-                            </div>
-                            <input className={styles.inputStyle} placeholder='Num of teeth' type='text' />
-                        </div>
-
 
 
 
@@ -259,17 +226,22 @@ const Register = () => {
                             <div className={styles.font}>
                                 SYSTOLIC
                             </div>
-                            <input className={styles.inputStyle} placeholder='mmHg' type='text' />
-                        </div>
+                            <div className={styles.flex}>
+                                <select {...register('systolic', {
+                                    required: true
+                                })} defaultValue="" className={styles.inputStyle}>
+                                    <option value="" disabled>mmHG...</option>
+                                    <option value="90-120">90 - 120</option>
+                                    <option value="More than 130">More than 130</option>
+                                    <option value="Less than 90">Less than 90</option>
+                                </select>
+                                <span className={styles.redred}>
+                                    {
+                                        errors.systolic && <span>This feild is required</span>
+                                    }
 
-
-
-
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                RELAXATION
+                                </span>
                             </div>
-                            <input className={styles.inputStyle} placeholder='mmHg' type='text' />
                         </div>
 
 
@@ -281,7 +253,22 @@ const Register = () => {
                             <div className={styles.font}>
                                 FASTING BLOOD SUGAR
                             </div>
-                            <input className={styles.inputStyle} placeholder='mmoI/L' type='text' />
+                            <div className={styles.flex}>
+                                <select {...register('bloodSugar', {
+                                    required: true
+                                })} defaultValue="" className={styles.inputStyle}>
+                                    <option value="" disabled>mmoI/L...</option>
+                                    <option value="70 - 99">70 - 99</option>
+                                    <option value="100 - 125">100 - 125</option>
+                                    <option value="More than 125">More than 125</option>
+                                </select>
+                                <span className={styles.redred}>
+                                    {
+                                        errors.bloodSugar && <span>This feild is required</span>
+                                    }
+
+                                </span>
+                            </div>
                         </div>
 
 
@@ -292,7 +279,21 @@ const Register = () => {
                             <div className={styles.font}>
                                 CHOLESTEROL
                             </div>
-                            <input className={styles.inputStyle} placeholder='mmoI/L' type='text' />
+                            <div className={styles.flex}>
+                                <select {...register('cholesterol', {
+                                    required: true
+                                })} defaultValue="" className={styles.inputStyle}>
+                                    <option value="" disabled>mmoI/L...</option>
+                                    <option value="Less than 3.0">Less than 3.0</option>
+                                    <option value="More than 1.0">More than 1.0</option>
+                                </select>
+                                <span className={styles.redred}>
+                                    {
+                                        errors.cholesterol && <span>This feild is required</span>
+                                    }
+
+                                </span>
+                            </div>
                         </div>
 
 
@@ -303,7 +304,22 @@ const Register = () => {
                             <div className={styles.font}>
                                 TRIGLYCERIDE
                             </div>
-                            <input className={styles.inputStyle} placeholder='mmoI/L' type='text' />
+                            <div className={styles.flex}>
+                                <select {...register('triglyceride', {
+                                    required: true
+                                })} defaultValue="" className={styles.inputStyle}>
+                                    <option value="" disabled>mmoI/L...</option>
+                                    <option value="Less than 1.7">Less than 1.7</option>
+                                    <option value="2.3 - 5.6">2.3 - 5.6</option>
+                                    <option value="More than 5.6">More than 5.6</option>
+                                </select>
+                                <span className={styles.redred}>
+                                    {
+                                        errors.triglyceride && <span>This feild is required</span>
+                                    }
+
+                                </span>
+                            </div>
                         </div>
 
 
@@ -314,31 +330,26 @@ const Register = () => {
                             <div className={styles.font}>
                                 HDL
                             </div>
-                            <input className={styles.inputStyle} placeholder='mmoI/L' type='text' />
-                        </div>
+                            <div className={styles.flex}>
+                                <select {...register('hdl', {
+                                    required: true
+                                })} defaultValue="" className={styles.inputStyle}>
+                                    <option value="" disabled>mmoI/L...</option>
+                                    <option value="Less than 1.0">Less than 1.0</option>
+                                    <option value="More than 1.5">More than 1.5</option>
+                                    <option value="More than 2.0">More than 2.0</option>
+                                </select>
+                                <span className={styles.redred}>
+                                    {
+                                        errors.hdl && <span>This feild is required</span>
+                                    }
 
+                                </span>
 
-
-
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                SMOKING
                             </div>
-                            <input className={styles.inputStyle} placeholder='smoker/nonSmoker' type='text' />
+
+
                         </div>
-
-
-
-
-
-                        <div className={styles.insideCenter}>
-                            <div className={styles.font}>
-                                age
-                            </div>
-                            <input className={styles.inputStyle} placeholder='' type='text' />
-                        </div>
-
-
                     </div>
                 </div>
                 <input type="submit" className={styles.buttonTwo} />

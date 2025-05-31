@@ -18,7 +18,7 @@ const Popap = (props: Props) => {
     return (
         <div className={styles.container}>
             <div onClick={props.close} className={styles.close}>
-                <Image src={'/Images/close.png'} width={20} height={20} alt={'popap-closer'} />
+                <Image src={'/Images/icon.png'} width={20} height={20} alt={'popap-closer'} />
 
             </div>
 
