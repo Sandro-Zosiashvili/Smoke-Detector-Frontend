@@ -27,21 +27,19 @@ type Inputs = {
 
 
 const Register = () => {
+    const [popap, setPopap] = useState(false)
+
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
-        console.log(data, 'esaaa')
-        axios.post('http:', data)
+        console.log(data, 'data')
         setPopap(!popap);
-
-        // if (!errors.age) {
-        //     window.scrollTo({ top: 100, behavior: 'smooth' });
-        //     console.log('shemodis')
-        // }
+        reset()
     }
 
     const keyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -51,22 +49,12 @@ const Register = () => {
         }
     }
 
-
-    const [popap, setPopap] = useState(false)
-
-
-
-
-
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.flexAlign}>
                 <div className={styles.input}>
                     <div className={styles.feidOne}>
                         <div className={styles.feidOne}>
-
-
-
                             <div className={styles.insideCenter}>
                                 <div className={styles.font}>
                                     AGE
@@ -89,16 +77,8 @@ const Register = () => {
                                         maxLength={3}
 
                                     />
-
-
                                 </div>
-
                             </div>
-
-
-
-
-
                             <div className={styles.insideCenter}>
                                 <label className={styles.font}>
                                     HEIGHT
@@ -122,12 +102,6 @@ const Register = () => {
                                     />
                                 </div>
                             </div>
-
-
-
-
-
-
                             <div className={styles.insideCenter}>
                                 <div className={styles.font}>
                                     WEIGHT
@@ -150,12 +124,6 @@ const Register = () => {
                                 </div>
 
                             </div>
-
-
-
-
-
-
                             <div className={styles.insideCenter}>
                                 <div className={styles.font}>
                                     WAIST
@@ -180,13 +148,6 @@ const Register = () => {
                                 </div>
 
                             </div>
-
-
-
-
-
-
-
                             <div className={styles.insideCenter}>
                                 <div className={styles.font}>
                                     HEMOGLOBIN
@@ -209,19 +170,9 @@ const Register = () => {
                                 </div>
 
                             </div>
-
-
-
-
-
-
                         </div>
                     </div>
                     <div className={styles.feildTwo}>
-
-
-
-
                         <div className={styles.insideCenter}>
                             <div className={styles.font}>
                                 SYSTOLIC
@@ -243,12 +194,6 @@ const Register = () => {
                                 </span>
                             </div>
                         </div>
-
-
-
-
-
-
                         <div className={styles.insideCenter}>
                             <div className={styles.font}>
                                 FASTING BLOOD SUGAR
@@ -270,11 +215,6 @@ const Register = () => {
                                 </span>
                             </div>
                         </div>
-
-
-
-
-
                         <div className={styles.insideCenter}>
                             <div className={styles.font}>
                                 CHOLESTEROL
@@ -295,11 +235,6 @@ const Register = () => {
                                 </span>
                             </div>
                         </div>
-
-
-
-
-
                         <div className={styles.insideCenter}>
                             <div className={styles.font}>
                                 TRIGLYCERIDE
@@ -321,11 +256,6 @@ const Register = () => {
                                 </span>
                             </div>
                         </div>
-
-
-
-
-
                         <div className={styles.insideCenter}>
                             <div className={styles.font}>
                                 HDL
@@ -360,8 +290,6 @@ const Register = () => {
                     <Popap close={() => setPopap(!popap)} />
                 </div>
             }
-
-
         </div >
     )
 }

@@ -12,11 +12,7 @@ type MenuitemType = {
 
 
 const Menuitem = () => {
-
     const router = useRouter()
-
-
-
 
     const data = [
         {
@@ -34,8 +30,6 @@ const Menuitem = () => {
         },
 
     ]
-
-
     return (
         <div className={styles.container}>
 
