@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './Menuitem.module.scss'
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
 
 
 type MenuitemType = {
