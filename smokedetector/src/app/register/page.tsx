@@ -20,7 +20,6 @@ type Inputs = {
     Cholesterol: string
 }
 
-
 const Register = () => {
     const [popap, setPopap] = useState(false)
 
