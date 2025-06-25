@@ -1,67 +1,83 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    
-    color: white;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.85);
-    /* ოდნავ გამჭვირვალე შავი */
-    font-family: 'Segoe UI', sans-serif;
-    gap: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.85);
+  /* ოდნავ გამჭვირვალე შავი */
+  font-family: 'Segoe UI', sans-serif;
+  gap: 70px;
+  font-size: 20px;
+  min-height: 85vh;
+
+
 }
 
+
+
 .leftContent {
-    max-width: 600px;
+  max-width: 530px;
 }
 
 .right {
-    max-width: 600px;
+  max-width: 600px;
 
 }
 
 .rightContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
 }
 
 .logo {
-    width: 60px;
-    margin-bottom: 20px;
+  width: 60px;
+  margin-bottom: 20px;
 }
 
 .title {
-    font-size: 45px;
-    margin-bottom: 20px;
-    color: #a1dfd0;
-    align-self: center;
+  font-size: 45px;
+  margin-bottom: 20px;
+  color: #a1dfd0;
+  align-self: center;
 }
 
 .paragraph {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 .list {
-    padding-left: 20px;
-    margin-bottom: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
 .listItem {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .lungsImage {
-    width: 90%;
-    max-width: 500px;
-    filter: brightness(1.2);
+  width: 90%;
+  max-width: 500px;
+  filter: brightness(1.2);
 }
 
 .flex {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
+}
+
+.topCenter {
+  width: 100px;
+  height: 110px;
+  background-color: rgba(0, 0, 0, 0.84);
+  position: absolute;
+  top: -100px;
+  left: 46.5%;
 }

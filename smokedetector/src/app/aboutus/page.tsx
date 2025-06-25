@@ -3,6 +3,9 @@ import styles from './page.module.scss'
 export default function AboutUs() {
     return (
         <div className={styles.container}>
+            <div  className={styles.topCenter}>
+
+            </div>
             <h1 className={styles.title}>About Us</h1>
             <div className={styles.flex}>
                 <div className={styles.leftContent}>
