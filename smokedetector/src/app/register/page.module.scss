@@ -1,198 +1,195 @@
 .container {
-    height: 80vh;
-    display: flex;
-    // align-items: center;
-    justify-content: center;
-    overflow-y: hidden
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden
 }
 
 .input {
-    display: flex;
-    justify-content: space-between;
-    width: 800px;
-    margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin-top: 100px;
 }
 
 .feidOne {
-    display: flex;
-    flex-direction: column;
-    // gap: 10px;
-    color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  // gap: 10px;
+  color: #ffffff;
 }
 
 .feildTwo {
-    display: flex;
-    flex-direction: column;
-    // gap: 10px;
+  display: flex;
+  flex-direction: column;
+  // gap: 10px;
 
 }
 
 .inputStyle {
-    width: 230px;
-    height: 35px;
-    font-size: 18px;
-    padding: 0 15px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    color: #9f9d9d;
-    cursor: pointer;
+  width: 230px;
+  height: 35px;
+  font-size: 18px;
+  padding: 0 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #9f9d9d;
+  cursor: pointer;
 
 
-    /* ლამაზი გრადიენტ ფონი */
-    background: linear-gradient(135deg,
-            rgba(0, 0, 0, 0.9) 0%,
-            rgba(40, 40, 40, 0.8) 50%,
-            rgba(0, 0, 0, 0.9) 100%);
+  background: linear-gradient(135deg,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(40, 40, 40, 0.8) 50%,
+          rgba(0, 0, 0, 0.9) 100%);
 
-    /* თეთრი border გარედან */
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
 
-    /* ლამაზი shadow ეფექტები */
-    box-shadow:
-        0 0 20px rgba(255, 255, 255, 0.1),
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1),
+  0 4px 15px rgba(0, 0, 0, 0.3),
+  inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
-    /* smooth ანიმაციები */
-    transition: all 0.3s ease;
-    outline: none;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Placeholder სტაილი */
+.inputStyle:-webkit-autofill,
+.inputStyle:-webkit-autofill:hover,
+.inputStyle:-webkit-autofill:focus,
+.inputStyle:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #1a1a1a inset,
+  0 0 0 2px rgba(255, 255, 255, 0.3);;
+  -webkit-text-fill-color: #9f9d9d !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  border: none !important;
+
+
+}
+
 .inputStyle::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 300;
-    font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  font-style: italic;
 }
 
-/* Focus სტაილი (აქტივ რეჟიმი) */
 .inputStyle:focus {
-    /* ძლიერი თეთრი border */
-    border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 
-    /* მზღვავარე ეფექტი */
-    box-shadow:
-        0 0 30px rgba(255, 255, 255, 0.3),
-        0 0 50px rgba(255, 255, 255, 0.1),
-        0 6px 20px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3),
+  0 0 50px rgba(255, 255, 255, 0.1),
+  0 6px 20px rgba(0, 0, 0, 0.4),
+  inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
-    /* ოდნავ ცოცხალი გრადიენტი */
-    background: linear-gradient(135deg,
-            rgba(20, 20, 20, 0.95) 0%,
-            rgba(60, 60, 60, 0.9) 50%,
-            rgba(20, 20, 20, 0.95) 100%);
+  background: linear-gradient(135deg,
+          rgba(20, 20, 20, 0.95) 0%,
+          rgba(60, 60, 60, 0.9) 50%,
+          rgba(20, 20, 20, 0.95) 100%);
 
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
-/* Hover ეფექტი */
 .inputStyle:hover {
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    box-shadow:
-        0 0 25px rgba(255, 255, 255, 0.2),
-        0 5px 18px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2),
+  0 5px 18px rgba(0, 0, 0, 0.35),
+  inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* დამატებითი ვარიანტი - medical theme-ისთვის */
 .inputStyle.medical {
-    border: 2px solid rgba(100, 200, 255, 0.3);
+  border: 2px solid rgba(100, 200, 255, 0.3);
 }
 
 .inputStyle.medical:focus {
-    border: 2px solid rgba(100, 200, 255, 0.8);
-    box-shadow:
-        0 0 30px rgba(100, 200, 255, 0.3),
-        0 0 50px rgba(100, 200, 255, 0.1),
-        0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(100, 200, 255, 0.8);
+  box-shadow: 0 0 30px rgba(100, 200, 255, 0.3),
+  0 0 50px rgba(100, 200, 255, 0.1),
+  0 6px 20px rgba(0, 0, 0, 0.4);
 }
-
 
 
 .font {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .insideCenter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
 }
 
 .flexAlign {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
 
 .buttonTwo {
-    border: none;
-    width: 300px;
-    height: 70px;
-    background: linear-gradient(to right, #181818, #fbfbfb);
-    color: white;
+  border: none;
+  width: 300px;
+  height: 70px;
+  background: linear-gradient(to right, #181818, #fbfbfb);
+  color: white;
 
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
 
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    background-size: 200% 100%;
-    background-position: left center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background-size: 200% 100%;
+  background-position: left center;
 }
 
 .buttonTwo:hover {
-    color: rgb(36, 36, 36);
-    background-position: right center;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
+  color: rgb(36, 36, 36);
+  background-position: right center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
 .popap {
-    position: absolute;
+  position: absolute;
 
 }
 
 .redred {
-    width: 200px;
-    height: 20px;
-    position: absolute;
-    top: 7px;
-    right: -210px;
-    font-size: 14px;
-    color: white;
+  width: 200px;
+  height: 20px;
+  position: absolute;
+  top: 7px;
+  right: -210px;
+  font-size: 14px;
+  color: white;
 }
 
 .flex {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .leftSideRed {
-    position: absolute;
-    width: 200px;
-    height: 20px;
-    left: -210px;
-    text-align: right;
-    top: 7px;
-    font-size: 14px;
-    color: white;
+  position: absolute;
+  width: 200px;
+  height: 20px;
+  left: -210px;
+  text-align: right;
+  top: 7px;
+  font-size: 14px;
+  color: white;
 
 }
 
 .flexFlex {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
 }
