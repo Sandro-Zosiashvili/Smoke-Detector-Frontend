@@ -32,14 +32,14 @@ const Register = () => {
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data, 'მიდის')
-        axios.post("https://localhost:7168", data)
+        axios.post("http://localhost:5145/data", data)
             .then((r) => {
                 console.log(r)
                 console.log("ბექში გაიგზავნა")
 
             })
         setPopap(!popap);
-        reset()
+        // reset()
     }
 
     const keyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
