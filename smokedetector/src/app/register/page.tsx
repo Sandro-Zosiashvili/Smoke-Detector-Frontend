@@ -1,10 +1,10 @@
 'use client'
 import styles from './page.module.scss'
-import {useForm, SubmitHandler} from "react-hook-form"
-import {useState} from 'react'
+import { useForm, SubmitHandler } from "react-hook-form"
+import { useState } from 'react'
 import Popap from '../components/Popap/Popap'
 import axios from 'axios'
-import {error} from 'console'
+import { error } from 'console'
 
 
 type Inputs = {
@@ -28,18 +28,22 @@ const Register = () => {
         handleSubmit,
         watch,
         reset,
-        formState: {errors},
+        formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data, 'მიდის')
-        axios.post("http://localhost:5145/data", data)
+        await axios.post("http://localhost:5145/data", data)
             .then((r) => {
                 console.log(r)
                 console.log("ბექში გაიგზავნა")
 
             })
+            .catch((r) => {
+                console.log("არ მიდის data ბექში")
+                console.log(r)
+            })
         setPopap(!popap);
-        // reset()
+        reset()
     }
 
     const keyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -81,8 +85,8 @@ const Register = () => {
                                         }
 
                                     })} className={styles.inputStyle} placeholder='year' type='text'
-                                           onKeyDown={(e) => keyKeyDown(e)}
-                                           maxLength={3}
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
 
                                     />
                                 </div>
@@ -113,8 +117,8 @@ const Register = () => {
                                         }
 
                                     })} className={styles.inputStyle} placeholder='cm' type='text'
-                                           onKeyDown={(e) => keyKeyDown(e)}
-                                           maxLength={3}
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
 
                                     />
                                 </div>
@@ -144,8 +148,8 @@ const Register = () => {
 
                                         }
                                     })} placeholder='WEIGHT' type='text'
-                                           onKeyDown={(e) => keyKeyDown(e)}
-                                           maxLength={3}
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
 
 
                                     />
@@ -177,8 +181,8 @@ const Register = () => {
 
                                         }
                                     })} className={styles.inputStyle} placeholder='cm' type='text'
-                                           onKeyDown={(e) => keyKeyDown(e)}
-                                           maxLength={3}
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        maxLength={3}
 
                                     />
 
@@ -208,8 +212,8 @@ const Register = () => {
 
                                         }
                                     })} placeholder='HB' type='text'
-                                           onKeyDown={(e) => keyKeyDown(e)}
-                                           className={styles.inputStyle}/>
+                                        onKeyDown={(e) => keyKeyDown(e)}
+                                        className={styles.inputStyle} />
                                 </div>
 
                             </div>
@@ -234,8 +238,8 @@ const Register = () => {
 
                                     }
                                 })} placeholder='mmHG' type='text'
-                                       onKeyDown={(e) => keyKeyDown(e)}
-                                       className={styles.inputStyle}/>
+                                    onKeyDown={(e) => keyKeyDown(e)}
+                                    className={styles.inputStyle} />
 
                                 <span className={styles.redred}>
                                     {errors.Systolic?.type === 'required' && <p>This field is required</p>}
@@ -263,8 +267,8 @@ const Register = () => {
 
                                     }
                                 })} type='text' placeholder='mmoI/L'
-                                       onKeyDown={(e) => keyKeyDown(e)}
-                                       className={styles.inputStyle}/>
+                                    onKeyDown={(e) => keyKeyDown(e)}
+                                    className={styles.inputStyle} />
                                 <span className={styles.redred}>
                                     {errors.FastingBloodSugar?.type === 'required' && <p>This field is required</p>}
                                     {errors.FastingBloodSugar?.type === 'min' &&
@@ -292,8 +296,8 @@ const Register = () => {
 
                                     }
                                 })} type='text' placeholder="mmoI/L"
-                                       onKeyDown={(e) => keyKeyDown(e)}
-                                       className={styles.inputStyle}/>
+                                    onKeyDown={(e) => keyKeyDown(e)}
+                                    className={styles.inputStyle} />
                                 <span className={styles.redred}>
                                     {errors.Cholesterol?.type === 'required' && <p>This field is required</p>}
                                     {errors.Cholesterol?.type === 'min' && <p>{errors.Cholesterol.message}</p>}
@@ -319,8 +323,8 @@ const Register = () => {
 
                                     }
                                 })} type='text' placeholder='mmoI/L'
-                                       onKeyDown={(e) => keyKeyDown(e)}
-                                       className={styles.inputStyle}/>
+                                    onKeyDown={(e) => keyKeyDown(e)}
+                                    className={styles.inputStyle} />
                                 <span className={styles.redred}>
                                     {errors.Triglyceride?.type === 'required' && <p>This field is required</p>}
                                     {errors.Triglyceride?.type === 'min' && <p>{errors.Triglyceride.message}</p>}
@@ -346,8 +350,8 @@ const Register = () => {
 
                                     }
                                 })} type="text" placeholder='mmoI/L'
-                                       onKeyDown={(e) => keyKeyDown(e)}
-                                       className={styles.inputStyle}/>
+                                    onKeyDown={(e) => keyKeyDown(e)}
+                                    className={styles.inputStyle} />
                                 <span className={styles.redred}>
                                     {errors.HDL?.type === 'required' && <p>This field is required</p>}
                                     {errors.HDL?.type === 'min' && <p>{errors.HDL.message}</p>}
@@ -358,12 +362,17 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
-                <input type="submit" className={styles.buttonTwo}/>
+                {
+                    !popap &&
+                    <input type="submit" className={styles.buttonTwo} />
+
+                }
             </form>
             {
                 popap &&
                 <div className={styles.popap}>
-                    <Popap close={() => setPopap(!popap)}/>
+                    <div className={styles.topCenter}></div>
+                    <Popap close={() => setPopap(!popap)} />
                 </div>
             }
         </div>
