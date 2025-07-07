@@ -14,7 +14,7 @@ type MenuitemType = {
 
 const Menuitem = () => {
     const router = useRouter()
-    const [active, setActive] = useState<number>();
+    const [active, setActive] = useState<number>(0);
 
     const data = [
         {
