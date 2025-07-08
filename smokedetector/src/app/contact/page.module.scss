@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: white;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.85);
+  font-family: 'Segoe UI', sans-serif;
+  gap: 70px;
+  font-size: 20px;
+  min-height: 85vh;
+}
+
+.topCenter {
+  width: 100px;
+  height: 110px;
+  background-color: rgba(0, 0, 0, 0.84);
+  position: absolute;
+  top: -100px;
+  left: 46.5%;
+}
+
+.title {
+  font-size: 45px;
+  margin-bottom: 20px;
+  color: #a1dfd0;
+  align-self: center;
+  font-weight: bold;
+}
+
+.information {
+  max-width: 703px;
+  line-height: 35px;
+  font-size: 22px;
+  align-self: center;
+  text-align: left;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.contCont {
+  font-size: 20px;
+  color: #e0f7fa;
+  background-color: rgba(124, 124, 124, 0.25);
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  cursor: text;
+}
+
+.contCont:hover {
+  background-color: rgba(200, 199, 199, 0.3);
+}
+
