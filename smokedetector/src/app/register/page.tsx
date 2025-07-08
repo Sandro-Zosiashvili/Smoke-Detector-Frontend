@@ -43,7 +43,7 @@ const Register = () => {
                 console.log(r)
             })
         setPopap(!popap);
-        reset()
+        // reset()
     }
 
     const keyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
