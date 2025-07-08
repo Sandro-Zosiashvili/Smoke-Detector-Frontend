@@ -35,7 +35,7 @@ const Register = () => {
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data, 'მიდის')
-        axios.post("https://localhost:7168/swagger", data)
+        axios.post("http://localhost:5145/data", data)
         .then((r) => {
             console.log(r)
             console.log("ბექში გაიგზავნა")
