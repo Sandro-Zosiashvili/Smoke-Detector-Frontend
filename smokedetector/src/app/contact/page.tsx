@@ -14,10 +14,10 @@ const contact = () => {
                 If you have questions, feedback, or would like to collaborate, please reach out to any of us at the
                 following email addresses:
                 <div className={styles.contacts}>
-                    <div className={styles.contCont}>Nika Iniashvili –</div>
+                    <div className={styles.contCont}>Nika Iniashvili – nika.iniashvili767@ens.tsu.edu.ge</div>
                     <div className={styles.contCont}>Luka Namoradze – luka.namoradze809@ens.tsu.edu.ge</div>
-                    <div className={styles.contCont}>Giorgi Aptsiauri –</div>
-                    <div className={styles.contCont}>Luka Kakriashvili –</div>
+                    <div className={styles.contCont}>Giorgi Aptsiauri – giorgi.aptsiauri928@ens.tsu.edu.ge</div>
+                    <div className={styles.contCont}>Luka Kakriashvili – luka.kakriashvili344@ens.tsu.edu.ge</div>
                 </div>
                 Thank you for your interest in our project
             </div>
