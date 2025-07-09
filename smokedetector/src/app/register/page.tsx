@@ -30,19 +30,19 @@ const Register = () => {
     } = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-  console.log(data, 'მიდის');
+        console.log(data, 'მიდის');
 
-  try {
-    const response = await axios.post("http://localhost:5145/data", data);
-    console.log(response);
-    console.log("ბექში გაიგზავნა");
-    setPopap(!popap);
-    reset();
-  } catch (error) {
-    console.log("არ მიდის data ბექში");
-    console.error(error);
-  }
-};
+        try {
+            const response = await axios.post("http://localhost:5145/data", data);
+            console.log(response);
+            console.log("ბექში გაიგზავნა");
+            setPopap(!popap);
+            reset();
+        } catch (error) {
+            console.log("არ მიდის data ბექში");
+            console.error(error);
+        }
+    };
 
     const keyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (!/[0-9]/.test(e.key) &&
