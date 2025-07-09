@@ -41,6 +41,8 @@ const Register = () => {
         } catch (error) {
             console.log("არ მიდის data ბექში");
             console.error(error);
+            setPopap(!popap);
+
         }
     };
 

@@ -1,56 +1,61 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // justify-content: center;
-    background: rgba(74, 74, 74, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(235, 235, 235, 0.06);
-    width: 500px;
-    max-width: 90%;
-    height: 500px;
-    padding: 30px;
-    margin: 30px auto;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  background: rgba(74, 74, 74, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(235, 235, 235, 0.06);
+  width: 500px;
+  max-width: 90%;
+  height: 500px;
+  padding: 30px;
+  margin: 30px auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 .result {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 10px;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
 .font {
-    padding: 10px;
-    font-size: 40px;
-    font-weight: 700;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 .predict {
-    font-size: 28px;
-    color: #d1d1d1;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 10px;
-    text-align: center;
-    line-height: 1.6;
+  font-size: 28px;
+  color: #d1d1d1;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.6;
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.loader {
+  text-align: center;
+
 }
