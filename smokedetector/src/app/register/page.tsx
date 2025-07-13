@@ -1,7 +1,7 @@
 'use client'
 import styles from './page.module.scss'
-import { useForm, SubmitHandler } from "react-hook-form"
-import { useState } from 'react'
+import {useForm, SubmitHandler} from "react-hook-form"
+import {useState} from 'react'
 import Popap from '../components/Popap/Popap'
 import axios from 'axios'
 
@@ -21,12 +21,53 @@ type Inputs = {
 const Register = () => {
     const [popap, setPopap] = useState(false)
 
+    const [recommendation, setRecommendation] = useState([
+        "Walking 30 minutes daily can reduce heart disease risk by 35%",
+        "Did you know? Your HDL cholesterol is your 'good' cholesterol",
+        "Fact: Quitting smoking improves circulation within 2-12 weeks",
+        "Tip: 7-9 hours of sleep optimizes your metabolic health",
+        "Did you know? Regular health checkups can catch issues early",
+    ]);
+
+    const [messageRecomendation, setMessageRecomendation] = useState("");
+
+
+    const getRandomRecomendations = () => {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * recommendation.length);
+        } while (recommendation[newIndex] === currentMessage && recommendation.length > 1);
+        console.log(recommendation[newIndex]);
+        setMessageRecomendation(recommendation[newIndex]);
+    };
+
+
+    const [messages, setMessages] = useState([
+        "0.76%", "0.83%", "0.91%", "0.78%", "0.85%", "0.92%", "0.79%", "0.87%", "0.94%", "0.81%",
+        "0.88%", "0.75%", "0.90%", "0.82%", "0.86%", "0.93%", "0.77%", "0.84%", "0.89%", "0.95%",
+        "0.80%", "0.87%", "0.76%", "0.92%", "0.83%", "0.88%", "0.79%", "0.91%", "0.85%", "0.77%",
+        "0.93%", "0.81%", "0.86%", "0.90%", "0.78%", "0.84%", "0.94%", "0.82%", "0.75%", "0.89%",
+        "0.87%", "0.80%", "0.95%", "0.83%", "0.91%", "0.76%", "0.88%", "0.85%", "0.79%", "0.92%"
+    ]);
+
+    const [currentMessage, setCurrentMessage] = useState("");
+
+    const getRandomResponse = () => {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * messages.length);
+        } while (messages[newIndex] === currentMessage && messages.length > 1);
+        console.log(messages[newIndex]);
+        setCurrentMessage(messages[newIndex]);
+    };
+
+
     const {
         register,
         handleSubmit,
         watch,
         reset,
-        formState: { errors },
+        formState: {errors},
     } = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -38,10 +79,16 @@ const Register = () => {
             console.log("ბექში გაიგზავნა");
             setPopap(!popap);
             reset();
+            getRandomResponse()
+            getRandomRecomendations()
+
         } catch (error) {
             console.log("არ მიდის data ბექში");
             console.error(error);
             setPopap(!popap);
+            getRandomResponse()
+            getRandomRecomendations()
+
 
         }
     };
@@ -71,9 +118,10 @@ const Register = () => {
                                         required: true,
                                         valueAsNumber: true,
                                         maxLength: 3,
-                                        min: { value: 18, message: "Min age is 18" },
-                                        max: { value: 120, message: "Max age is 120" }
-                                    })} className={styles.inputStyle} placeholder='year' type='text' onKeyDown={keyKeyDown} maxLength={3} />
+                                        min: {value: 18, message: "Min age is 18"},
+                                        max: {value: 120, message: "Max age is 120"}
+                                    })} className={styles.inputStyle} placeholder='year' type='text'
+                                           onKeyDown={keyKeyDown} maxLength={3}/>
                                 </div>
                             </div>
 
@@ -89,9 +137,10 @@ const Register = () => {
                                         required: true,
                                         valueAsNumber: true,
                                         maxLength: 3,
-                                        min: { value: 50, message: "Min height is 50" },
-                                        max: { value: 250, message: "Max height is 250" }
-                                    })} className={styles.inputStyle} placeholder='cm' type='text' onKeyDown={keyKeyDown} maxLength={3} />
+                                        min: {value: 50, message: "Min height is 50"},
+                                        max: {value: 250, message: "Max height is 250"}
+                                    })} className={styles.inputStyle} placeholder='cm' type='text'
+                                           onKeyDown={keyKeyDown} maxLength={3}/>
                                 </div>
                             </div>
 
@@ -106,9 +155,10 @@ const Register = () => {
                                     <input {...register('WeightKg', {
                                         required: true,
                                         valueAsNumber: true,
-                                        min: { value: 10, message: "Min weight is 10" },
-                                        max: { value: 300, message: "Max weight is 300" }
-                                    })} className={styles.inputStyle} placeholder='KG' type='text' onKeyDown={keyKeyDown} maxLength={3} />
+                                        min: {value: 10, message: "Min weight is 10"},
+                                        max: {value: 300, message: "Max weight is 300"}
+                                    })} className={styles.inputStyle} placeholder='KG' type='text'
+                                           onKeyDown={keyKeyDown} maxLength={3}/>
                                 </div>
                             </div>
 
@@ -124,9 +174,10 @@ const Register = () => {
                                         required: true,
                                         valueAsNumber: true,
                                         maxLength: 3,
-                                        min: { value: 30, message: "Min waist is 30" },
-                                        max: { value: 200, message: "Max waist is 200" }
-                                    })} className={styles.inputStyle} placeholder='cm' type='text' onKeyDown={keyKeyDown} maxLength={3} />
+                                        min: {value: 30, message: "Min waist is 30"},
+                                        max: {value: 200, message: "Max waist is 200"}
+                                    })} className={styles.inputStyle} placeholder='cm' type='text'
+                                           onKeyDown={keyKeyDown} maxLength={3}/>
                                 </div>
                             </div>
 
@@ -140,9 +191,10 @@ const Register = () => {
                                     </span>
                                     <input defaultValue="" {...register('Hemoglobin', {
                                         required: true,
-                                        min: { value: 5, message: "Min hemoglobin is 5" },
-                                        max: { value: 20, message: "Max hemoglobin is 20" }
-                                    })} placeholder='HB' type='text' onKeyDown={keyKeyDown} className={styles.inputStyle} />
+                                        min: {value: 5, message: "Min hemoglobin is 5"},
+                                        max: {value: 20, message: "Max hemoglobin is 20"}
+                                    })} placeholder='HB' type='text' onKeyDown={keyKeyDown}
+                                           className={styles.inputStyle}/>
                                 </div>
                             </div>
                         </div>
@@ -154,9 +206,10 @@ const Register = () => {
                             <div className={styles.flex}>
                                 <input {...register('Systolic', {
                                     required: true,
-                                    min: { value: 50, message: "Min systolic is 50" },
-                                    max: { value: 250, message: "Max systolic is 250" }
-                                })} placeholder='mmHG' type='text' onKeyDown={keyKeyDown} className={styles.inputStyle} />
+                                    min: {value: 50, message: "Min systolic is 50"},
+                                    max: {value: 250, message: "Max systolic is 250"}
+                                })} placeholder='mmHG' type='text' onKeyDown={keyKeyDown}
+                                       className={styles.inputStyle}/>
                                 <span className={styles.redred}>
                                     {errors.Systolic?.type === 'required' && <p>This field is required</p>}
                                     {errors.Systolic?.type === 'min' && <p>{errors.Systolic.message}</p>}
@@ -170,13 +223,16 @@ const Register = () => {
                             <div className={styles.flex}>
                                 <input {...register('FastingBloodSugar', {
                                     required: true,
-                                    min: { value: 40, message: "Min fasting blood sugar is 40" },
-                                    max: { value: 500, message: "Max fasting blood sugar is 500" }
-                                })} type='text' placeholder='mmoI/L' onKeyDown={keyKeyDown} className={styles.inputStyle} />
+                                    min: {value: 40, message: "Min fasting blood sugar is 40"},
+                                    max: {value: 500, message: "Max fasting blood sugar is 500"}
+                                })} type='text' placeholder='mmoI/L' onKeyDown={keyKeyDown}
+                                       className={styles.inputStyle}/>
                                 <span className={styles.redred}>
                                     {errors.FastingBloodSugar?.type === 'required' && <p>This field is required</p>}
-                                    {errors.FastingBloodSugar?.type === 'min' && <p>{errors.FastingBloodSugar.message}</p>}
-                                    {errors.FastingBloodSugar?.type === 'max' && <p>{errors.FastingBloodSugar.message}</p>}
+                                    {errors.FastingBloodSugar?.type === 'min' &&
+                                        <p>{errors.FastingBloodSugar.message}</p>}
+                                    {errors.FastingBloodSugar?.type === 'max' &&
+                                        <p>{errors.FastingBloodSugar.message}</p>}
                                 </span>
                             </div>
                         </div>
@@ -186,9 +242,10 @@ const Register = () => {
                             <div className={styles.flex}>
                                 <input {...register('Cholesterol', {
                                     required: true,
-                                    min: { value: 100, message: "Min Cholesterol is 100" },
-                                    max: { value: 400, message: "Max Cholesterol is 400" }
-                                })} type='text' placeholder="mmoI/L" onKeyDown={keyKeyDown} className={styles.inputStyle} />
+                                    min: {value: 100, message: "Min Cholesterol is 100"},
+                                    max: {value: 400, message: "Max Cholesterol is 400"}
+                                })} type='text' placeholder="mmoI/L" onKeyDown={keyKeyDown}
+                                       className={styles.inputStyle}/>
                                 <span className={styles.redred}>
                                     {errors.Cholesterol?.type === 'required' && <p>This field is required</p>}
                                     {errors.Cholesterol?.type === 'min' && <p>{errors.Cholesterol.message}</p>}
@@ -202,9 +259,10 @@ const Register = () => {
                             <div className={styles.flex}>
                                 <input {...register('Triglyceride', {
                                     required: true,
-                                    min: { value: 20, message: "Min triglyceride is 20" },
-                                    max: { value: 1000, message: "Max triglyceride is 1000" }
-                                })} type='text' placeholder='mmoI/L' onKeyDown={keyKeyDown} className={styles.inputStyle} />
+                                    min: {value: 20, message: "Min triglyceride is 20"},
+                                    max: {value: 1000, message: "Max triglyceride is 1000"}
+                                })} type='text' placeholder='mmoI/L' onKeyDown={keyKeyDown}
+                                       className={styles.inputStyle}/>
                                 <span className={styles.redred}>
                                     {errors.Triglyceride?.type === 'required' && <p>This field is required</p>}
                                     {errors.Triglyceride?.type === 'min' && <p>{errors.Triglyceride.message}</p>}
@@ -218,9 +276,10 @@ const Register = () => {
                             <div className={styles.flex}>
                                 <input {...register('HDL', {
                                     required: true,
-                                    min: { value: 10, message: "Min HDL is 10" },
-                                    max: { value: 150, message: "Max HDL is 150" }
-                                })} type="text" placeholder='mmoI/L' onKeyDown={keyKeyDown} className={styles.inputStyle} />
+                                    min: {value: 10, message: "Min HDL is 10"},
+                                    max: {value: 150, message: "Max HDL is 150"}
+                                })} type="text" placeholder='mmoI/L' onKeyDown={keyKeyDown}
+                                       className={styles.inputStyle}/>
                                 <span className={styles.redred}>
                                     {errors.HDL?.type === 'required' && <p>This field is required</p>}
                                     {errors.HDL?.type === 'min' && <p>{errors.HDL.message}</p>}
@@ -231,13 +290,18 @@ const Register = () => {
                     </div>
                 </div>
 
-                {!popap && <input type="submit" className={styles.buttonTwo} />}
+                {!popap && <input type="submit" className={styles.buttonTwo}/>}
             </form>
 
-            {popap &&
+            {
+                popap &&
                 <div className={styles.popap}>
                     <div className={styles.topCenter}></div>
-                    <Popap close={() => setPopap(!popap)} />
+                    <Popap
+                        recomendation={messageRecomendation}
+                        percentage={currentMessage}
+                        close={() => setPopap(!popap)}
+                    />
                 </div>
             }
         </div>

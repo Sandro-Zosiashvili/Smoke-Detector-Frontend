@@ -40,8 +40,8 @@
 }
 
 .predict {
-  font-size: 28px;
-  color: #d1d1d1;
+  font-size: 30px;
+  color: #d3d3d3;
   font-family: 'Poppins', sans-serif;
   margin-top: 10px;
   text-align: center;
@@ -57,5 +57,21 @@
 
 .loader {
   text-align: center;
+
+}
+.recomendation {
+  font-size: 18px;
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.03); /* თხელი გამჭვირვალე შავი */
+  color: #ffffff;
+  border-left: 3px solid #00ffc3; /* ნათელი ტურკუსი ზოლი */
+  padding: 18px 22px;
+  border-radius: 16px;
+  line-height: 1.7;
+  box-shadow: 0 8px 20px rgba(0, 255, 195, 0.08);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  max-width: 680px;
+  margin: 40px auto;
 
 }

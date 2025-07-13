@@ -6,7 +6,9 @@ import {useEffect, useState} from "react";
 
 
 type Props = {
-    close: () => void
+    close: () => void;
+    percentage: string;
+    recomendation: string;
 
 
 }
@@ -49,15 +51,31 @@ const Popap = (props: Props) => {
                 <Image src={'/Images/icon.png'} width={20} height={20} alt={'popap-closer'}/>
 
             </div>
-            <div className={styles.result}>
-                <div className={styles.font}>
-                    Result
+            {active &&
+                <div className={styles.result}>
+                    <div className={styles.font}>
+                        Result
+                    </div>
                 </div>
-            </div>
+
+            }
+            {
+                !active &&
+                <div className={styles.result}>
+                    <div className={styles.font}>
+                        Loading...
+                    </div>
+                </div>
+            }
             {
                 active &&
                 <div className={styles.predict}>
-                    predict:
+                    <div>
+                        predict: {props.percentage}
+                    </div>
+                    <div className={styles.recomendation}>
+                        {props.recomendation}
+                    </div>
                 </div>
             }
             {
