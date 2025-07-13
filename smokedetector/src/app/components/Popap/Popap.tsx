@@ -9,6 +9,7 @@ type Props = {
     close: () => void;
     percentage: string;
     recomendation: string;
+    prediction: boolean | undefined;
 
 
 }
@@ -51,27 +52,29 @@ const Popap = (props: Props) => {
                 <Image src={'/Images/icon.png'} width={20} height={20} alt={'popap-closer'}/>
 
             </div>
-            {active &&
-                <div className={styles.result}>
-                    <div className={styles.font}>
-                        Result
-                    </div>
-                </div>
-
-            }
             {
-                !active &&
-                <div className={styles.result}>
-                    <div className={styles.font}>
-                        Loading...
+                active ?
+                    <div className={styles.result}>
+                        <div className={styles.font}>
+                            Result
+                        </div>
+                    </div> :
+                    <div className={styles.result}>
+                        <div className={styles.font}>
+                            Loading...
+                        </div>
                     </div>
-                </div>
             }
+
+
             {
                 active &&
                 <div className={styles.predict}>
                     <div>
                         predict: {props.percentage}
+                    </div>
+                    <div className={styles.status}>
+                        {props.prediction ? "You are a smoker!" : "You are not a smoker!"}
                     </div>
                     <div className={styles.recomendation}>
                         {props.recomendation}

@@ -19,7 +19,12 @@ type Inputs = {
 }
 
 const Register = () => {
-    const [popap, setPopap] = useState(false)
+    const [popap, setPopap] = useState<boolean>(false)
+    const [messageRecommendation, setMessageRecommendation] = useState<string>("");
+    const [currentMessage, setCurrentMessage] = useState<string>("");
+    const [backResponse, setBackResponse] = useState<boolean>();
+
+
 
     const [recommendation, setRecommendation] = useState([
         "Walking 30 minutes daily can reduce heart disease risk by 35%",
@@ -28,9 +33,6 @@ const Register = () => {
         "Tip: 7-9 hours of sleep optimizes your metabolic health",
         "Did you know? Regular health checkups can catch issues early",
     ]);
-
-    const [messageRecommendation, setMessageRecommendation] = useState("");
-
 
     const getRandomRecommendation = () => {
         if (recommendation.length === 0) return;
@@ -59,7 +61,6 @@ const Register = () => {
         "0.87%", "0.80%", "0.95%", "0.83%", "0.91%", "0.76%", "0.88%", "0.85%", "0.79%", "0.92%"
     ]);
 
-    const [currentMessage, setCurrentMessage] = useState("");
 
     const getRandomResponse = () => {
         let newIndex;
@@ -87,17 +88,21 @@ const Register = () => {
             console.log(response);
             console.log("ბექში გაიგზავნა");
             setPopap(!popap);
-            reset();
+            // reset();
             getRandomResponse()
             getRandomRecommendation()
+            setBackResponse(!!response.data.prediction)
 
         } catch (error) {
-            console.log("არ მიდის data ბექში");
-            console.error(error);
-            setPopap(!popap);
-            getRandomResponse()
-            getRandomRecommendation()
-            
+            // setPopap(!popap);
+            // getRandomResponse()
+            // getRandomRecommendation()
+            // setBackResponse(true)
+            console.log(error);
+            //  ბექი თუ  ვერ გადააბით მაღლა 4 ჩაკომენტარებული
+            //  ფუნცია ამოაკომენატერე და ეგარი
+            // სულ თრუს დააბრუნებს, კუსტალურია მარა იყოს რა
+
         }
     };
 
@@ -306,6 +311,7 @@ const Register = () => {
                 <div className={styles.popap}>
                     <div className={styles.topCenter}></div>
                     <Popap
+                        prediction={backResponse}
                         recomendation={messageRecommendation}
                         percentage={currentMessage}
                         close={() => setPopap(!popap)}
