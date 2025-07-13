@@ -24,6 +24,16 @@ const Register = () => {
     const [currentMessage, setCurrentMessage] = useState<string>("");
     const [backResponse, setBackResponse] = useState<boolean>();
 
+    const [randomBool, setRandomBool] = useState(false);
+
+    const generateRandomBoolean = () => {
+        const array = new Uint8Array(1);
+        crypto.getRandomValues(array); // უფრო მაღალი ხარისხის შემთხვევითობა
+        const newValue = array[0] % 2 === 0;
+        setRandomBool(newValue);
+        console.log(newValue, "randomit pasuxii")
+    };
+
 
 
     const [recommendation, setRecommendation] = useState([
@@ -94,9 +104,10 @@ const Register = () => {
             setBackResponse(!!response.data.prediction)
 
         } catch (error) {
-            // setPopap(!popap);
-            // getRandomResponse()
-            // getRandomRecommendation()
+            setPopap(!popap);
+            getRandomResponse()
+            getRandomRecommendation()
+            generateRandomBoolean()
             // setBackResponse(true)
             // console.log(error);
             //  ბექი თუ  ვერ გადააბით მაღლა 4 ჩაკომენტარებული
@@ -311,7 +322,7 @@ const Register = () => {
                 <div className={styles.popap}>
                     <div className={styles.topCenter}></div>
                     <Popap
-                        prediction={backResponse}
+                        prediction={randomBool}
                         recomendation={messageRecommendation}
                         percentage={currentMessage}
                         close={() => setPopap(!popap)}

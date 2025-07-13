@@ -17,8 +17,8 @@ type Props = {
 
 const Popap = (props: Props) => {
     const [percentage, setPercentage] = useState(0);
-
     const [active, setActive] = useState<boolean>(false)
+
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -71,7 +71,7 @@ const Popap = (props: Props) => {
                 active &&
                 <div className={styles.predict}>
                     <div>
-                        predict: {props.percentage}
+                        Probability: {props.percentage}
                     </div>
                     <div className={styles.status}>
                         {props.prediction ? "You are a smoker!" : "You are not a smoker!"}
