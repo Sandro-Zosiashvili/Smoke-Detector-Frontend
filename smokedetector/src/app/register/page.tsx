@@ -29,16 +29,25 @@ const Register = () => {
         "Did you know? Regular health checkups can catch issues early",
     ]);
 
-    const [messageRecomendation, setMessageRecomendation] = useState("");
+    const [messageRecommendation, setMessageRecommendation] = useState("");
 
 
-    const getRandomRecomendations = () => {
+    const getRandomRecommendation = () => {
+        if (recommendation.length === 0) return;
+
         let newIndex;
+        let attempts = 0;
+        const maxAttempts = 10;
+
         do {
             newIndex = Math.floor(Math.random() * recommendation.length);
-        } while (recommendation[newIndex] === currentMessage && recommendation.length > 1);
-        console.log(recommendation[newIndex]);
-        setMessageRecomendation(recommendation[newIndex]);
+            attempts++;
+        } while (
+            recommendation[newIndex] === messageRecommendation &&
+            attempts < maxAttempts
+            );
+
+        setMessageRecommendation(recommendation[newIndex]);
     };
 
 
@@ -80,16 +89,15 @@ const Register = () => {
             setPopap(!popap);
             reset();
             getRandomResponse()
-            getRandomRecomendations()
+            getRandomRecommendation()
 
         } catch (error) {
             console.log("არ მიდის data ბექში");
             console.error(error);
             setPopap(!popap);
             getRandomResponse()
-            getRandomRecomendations()
-
-
+            getRandomRecommendation()
+            
         }
     };
 
@@ -298,7 +306,7 @@ const Register = () => {
                 <div className={styles.popap}>
                     <div className={styles.topCenter}></div>
                     <Popap
-                        recomendation={messageRecomendation}
+                        recomendation={messageRecommendation}
                         percentage={currentMessage}
                         close={() => setPopap(!popap)}
                     />
