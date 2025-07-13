@@ -98,7 +98,7 @@ const Register = () => {
             // getRandomResponse()
             // getRandomRecommendation()
             // setBackResponse(true)
-            console.log(error);
+            // console.log(error);
             //  ბექი თუ  ვერ გადააბით მაღლა 4 ჩაკომენტარებული
             //  ფუნცია ამოაკომენატერე და ეგარი
             // სულ თრუს დააბრუნებს, კუსტალურია მარა იყოს რა
